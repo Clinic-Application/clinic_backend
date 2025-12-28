@@ -1,0 +1,35 @@
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional npm cache directory
+.npm
+
+# dotenv environment variables file
+.env
+
+# Build output folders (if any)
+dist/
+build/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE files (common ones)
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Optional coverage directory
+coverage/
+
+# Optional debug output
+debug.log
