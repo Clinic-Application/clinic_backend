@@ -39,11 +39,14 @@ exports.getVisitById = (req, res, next) =>{
 }
 
 exports.createVisit = (req, res, next) =>{
-    const patientId= req.params;
+    const patientId= parseInt(req.params.patientId);
     const data = req.body;
 
     if(!patientId && isNaN(patientId)){
         return next(new AppError("invalid patient ID", 400));
+    }
+    if(!req.body.symptoms){
+        return next(new AppError("at least symptoms must be required", 400))
     }
     Visit.create(patientId, data, (err, visitId) =>{
         if(err) return next(new AppError("database error", 500))
