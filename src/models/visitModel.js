@@ -1,6 +1,12 @@
 const db = require("../config/database");
 
 const Visit = {
+
+  findById : (id, callback) =>{
+    const sql =  `SELECT visit_id FROM visit WHERE visit_id = ?`
+    db.get(sql, [id], callback)
+  },
+
   // get all visits
   getByPatientId: (patientId, callback) => {
     const sql = `

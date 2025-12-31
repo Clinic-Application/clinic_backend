@@ -51,7 +51,7 @@ exports.createVisit = (req, res, next) =>{
         res.status(201).json({
             status: "success",
             message:"visit created successfully",
-            visitId
+            visitId: visitId
         })
     })
 }
