@@ -45,9 +45,6 @@ exports.createVisit = (req, res, next) =>{
     if(!patientId && isNaN(patientId)){
         return next(new AppError("invalid patient ID", 400));
     }
-    if(!req.body.symptoms){
-        return next(new AppError("at least symptoms must be required", 400))
-    }
     Visit.create(patientId, data, (err, visitId) =>{
         if(err) return next(new AppError("database error", 500))
 

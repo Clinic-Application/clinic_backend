@@ -23,7 +23,6 @@ const Visit = {
   //   create a visit
   create: (patientId, data, callback) => {
     const {
-      visit_date,
       symptoms,
       diagnosis,
       bp,
@@ -32,19 +31,21 @@ const Visit = {
       temp,
       doctor_instruction,
       other_examination,
+      past_medical_conditions,
+      allergies,
+      surgical_history,
     } = data;
 
     const sql = `
       INSERT INTO visit (
-        patient_id, visit_date, symptoms, diagnosis, bp, bs, bg, temp, doctor_instruction, other_examination
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        patient_id, symptoms, diagnosis, bp, bs, bg, temp, doctor_instruction, other_examination, past_medical_conditions, allergies,surgical_history  
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     db.run(
       sql,
       [
         patientId,
-        visit_date,
         symptoms,
         diagnosis,
         bp,
@@ -53,6 +54,9 @@ const Visit = {
         temp,
         doctor_instruction,
         other_examination,
+        past_medical_conditions,
+        allergies,
+        surgical_history
       ],
       function (err) {
         callback(err, this?.lastID);
