@@ -4,6 +4,7 @@ const patientRoutes = require("./routes/patientRoute");
 const visitRoutes = require("./routes/visitRoute");
 const medicineRoutes = require("./routes/medicineRoute");
 const prescriptionRoute = require('./routes/prescriptionRoute')
+const prescription_itemRoute = require('./routes/prescription_itemRoute')
 
 const errorHandler = require("./middlewares/errorHandler");
 const AppError = require("./utils/appError");
@@ -17,6 +18,7 @@ app.use("/api/patients", patientRoutes);
 app.use("/api", visitRoutes);
 app.use("/api/medicines", medicineRoutes);
 app.use('/api/prescription', prescriptionRoute);
+app.use('/api/prescription-items', prescription_itemRoute)
 
 
 app.use((req, res, next) => {

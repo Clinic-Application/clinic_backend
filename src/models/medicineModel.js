@@ -1,6 +1,11 @@
 const db = require("../config/database");
 
 const Medicine = {
+  findById: (id, callback) => {
+    const sql = `SELECT medicine_id FROM medicine WHERE medicine_id = ?`;
+    db.get(sql, [id], callback);
+  },
+
   // create
   create: (data, callback) => {
     const sql = `INSERT INTO medicine (name, type, power) values (?, ?, ?)`;
