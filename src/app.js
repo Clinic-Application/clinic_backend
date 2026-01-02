@@ -1,10 +1,13 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
+
 const patientRoutes = require("./routes/patientRoute");
 const visitRoutes = require("./routes/visitRoute");
 const medicineRoutes = require("./routes/medicineRoute");
-const prescriptionRoute = require('./routes/prescriptionRoute')
-const prescription_itemRoute = require('./routes/prescription_itemRoute')
+const prescriptionRoute = require("./routes/prescriptionRoute");
+const prescription_itemRoute = require("./routes/prescription_itemRoute");
+const settingsRoute = require("./routes/settingRoute");
 
 const errorHandler = require("./middlewares/errorHandler");
 const AppError = require("./utils/appError");
@@ -17,9 +20,11 @@ app.use(express.json());
 app.use("/api/patients", patientRoutes);
 app.use("/api", visitRoutes);
 app.use("/api/medicines", medicineRoutes);
-app.use('/api/prescription', prescriptionRoute);
-app.use('/api/prescription-items', prescription_itemRoute)
+app.use("/api/prescription", prescriptionRoute);
+app.use("/api/prescription-items", prescription_itemRoute);
+app.use('/api/settings', settingsRoute)
 
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 app.use((req, res, next) => {
   next(new AppError(`route ${req.originalUrl} not found`, 404));
